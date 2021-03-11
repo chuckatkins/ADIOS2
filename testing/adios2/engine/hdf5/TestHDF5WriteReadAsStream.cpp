@@ -981,7 +981,7 @@ TEST_F(HDF5WriteReadAsStreamTestADIOS2, ReaderWriterDefineVariable)
             adios2::Variable<float> varR32 = io.InquireVariable<float>("r32");
             EXPECT_TRUE(varR32);
             adios2::Variable<double> varR64 = io.InquireVariable<double>("r64");
-            EXPECT_TRUE(varR32);
+            EXPECT_TRUE(varR64);
             reader.EndStep();
         }
         reader.Close();
