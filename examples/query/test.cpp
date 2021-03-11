@@ -127,7 +127,7 @@ bool testMe(std::string &queryConfigFile, std::string const &doubleVarName,
 
     //  to be continued
     if (!reader)
-      return false;
+        return false;
     // std::vector<double> dataOutput;
     // std::vector<adios2::Dims> coordinateOutput;
 
