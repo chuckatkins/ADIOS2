@@ -321,7 +321,7 @@ adios2::StepStatus hdf5Stream::Read(CommandRead *cmdR, Config &cfg,
         hid_t dataset = H5Dopen2(h5file, var->name.c_str(), H5P_DEFAULT);
         hid_t filespace = H5Dget_space(dataset);
         std::vector<hsize_t> dims(var->ndim + 1);
-        int ndim = H5Sget_simple_extent_ndims(filespace);
+        // int ndim = H5Sget_simple_extent_ndims(filespace);
         H5Sget_simple_extent_dims(filespace, dims.data(), NULL);
         /* ndim == var->ndim+1 */
         nSteps = dims[0];
