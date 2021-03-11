@@ -98,8 +98,7 @@ private:
 }; // XmlWorker
 
 Worker *GetWorker(const std::string &configFile,
-		  adios2::core::Engine *adiosEngine);
-
+                  adios2::core::Engine *adiosEngine);
 
 } // namespace query
 } // name space adios2
