@@ -202,15 +202,15 @@ void HDF5NativeWriter::CreateAndStoreScalar(std::string const &variableName,
         hid_t type = H5Tcopy(H5T_C_S1);
         char *strval = (char *)values;
         hid_t ret = H5Tset_size(type, strlen(strval));
-
+        EXPECT_TRUE(ret >= 0);
         ret = H5Tset_strpad(type, H5T_STR_NULLTERM);
-
+        EXPECT_TRUE(ret >= 0);
         /* Test creating a "normal" sized string attribute */
         dsetID = H5Dcreate(m_GroupId, variableName.c_str(), type, filespaceID,
                            H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
 
         ret = H5Dwrite(dsetID, type, H5S_ALL, H5S_ALL, plistID, values);
-
+        EXPECT_TRUE(ret >= 0);
 #ifdef DOUBLECHECK
         size_t typesize = H5Tget_size(type);
         char *val = (char *)(calloc(typesize, sizeof(char)));
