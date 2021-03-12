@@ -23,6 +23,10 @@ hdf5Stream::hdf5Stream(const std::string &streamName, const adios2::Mode mode,
     MPI_Info info = MPI_INFO_NULL;
     herr_t ret = H5Pset_fapl_mpio(acc_tpl, comm, info);
 
+    if (ret < 0)
+    {
+        throw std::runtime_error("Unable to call set_fapl_mpio");
+    }
     // int myRank;
     // MPI_Comm_rank(comm, &myRank);
     // double timeStart, timeEnd;
@@ -56,6 +60,10 @@ hdf5Stream::hdf5Stream(const std::string &streamName, const adios2::Mode mode,
     //     open_perf_log.close();
     // }
     ret = H5Pclose(acc_tpl);
+    if (ret < 0)
+    {
+        throw std::runtime_error("Unable to call set_fapl_mpio");
+    }
 }
 
 hdf5Stream::~hdf5Stream() {}
