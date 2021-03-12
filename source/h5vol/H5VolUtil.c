@@ -35,14 +35,13 @@ void *safe_malloc(size_t n, unsigned long line)
     return p;
 }
 
-void safe_free(void *p)
+void safe_free(void **p)
 {
-    if (p == NULL)
+    if (p != NULL && *p != NULL)
     {
-        return;
+        free(*p);
+        *p = NULL;
     }
-    free(p);
-    p = NULL;
 }
 
 void *safe_ralloc(void *ptr, size_t newsize, unsigned long line)
