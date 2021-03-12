@@ -838,9 +838,9 @@ hid_t HDF5Common::GetTypeStringScalar(const std::string &input)
     /* Create a datatype to refer to. */
     hid_t type = H5Tcopy(H5T_C_S1);
     hid_t ret = H5Tset_size(type, input.size());
-
+    CHECK_H5_RETURN(ret, "GetTypeStringScalar, H5Tset_size");
     ret = H5Tset_strpad(type, H5T_STR_NULLTERM);
-
+    CHECK_H5_RETURN(ret, "GetTypeStringScalar, H5Tset_strpad");
     return type;
 }
 
